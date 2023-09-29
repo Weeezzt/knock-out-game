@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(80deg, #b61111, #d66f16, #d9e71a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+
+.main-content-container, h1, h2, h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-transform: uppercase;
+}
+
+.main-content-container {
+    margin: 50px 100px;
+    min-height: 70vh;
+    min-width: 50vw;
+    background-color: rgb(68, 142, 216);
+    display: grid;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.header-content {
+    display: grid;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-content: center;
+    color: #bd1a1a;
+}
+.headerimg {
+    width: 60px;
+}
+.headerimg1 {
+    width: 60px;
+    display: grid;
+    justify-self: end;
+}
+
+.instructions {
+    margin-top: 15vh;
+    display: grid;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    max-width: 32vw;
+    
+}
+
+.instructions, h2 {
+    padding-bottom: 5vh;
+    
+}
+
+.instructions, ul{
+    display: grid;
+    height: 30vh;
+    margin-bottom: 5vh;
+
+}
+
+.instructions, p{
+    font-size: small;
+}
+
+.start {
+    display: grid;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    margin-bottom: 3vh;
+}
+
+.start-game {
+    display: flex;
+}
+
+.start-game, button{
+    border-radius: 10px;
+    padding: 2px;
+    color: green;
+}
+
+.start, input{
+    display: grid;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    padding: 2px;
+    margin: 6px;
+}
+
