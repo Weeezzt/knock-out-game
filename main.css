@@ -9,7 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    overflow: hidden;
+    
 }
 
 
@@ -17,11 +17,12 @@ body {
 .main-content-container, h1, h2, h3{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-transform: uppercase;
+
 }
 
 .main-content-container {
     margin: 50px 100px;
-    min-height: 70vh;
+    height: 751px;
     min-width: 50vw;
     background-color: rgb(68, 142, 216);
     display: grid;
@@ -103,3 +104,14 @@ body {
     margin: 6px;
 }
 
+.button {
+    border-radius: 10px;
+    padding: 2px;
+    color: green;
+}
+
+.diceImg {
+
+    display: flex;
+    width: 125px;
+}
