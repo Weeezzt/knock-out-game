@@ -6,8 +6,9 @@ const counterDiv = document.getElementById("counter")
 const diceContainer = document.getElementById("dice-container");
 const gameOverDiv  = document.getElementById("game-over");
 const instDiv = document.getElementById("instructions");
+const bniDiv = document.getElementById("start-game");
 const startDiv = document.getElementById("starter");
-let counter = document.createElement("span");
+const counter = document.createElement("span");
 const image = document.createElement("img");
 const button = document.createElement("button");
 const tryAgainButton = document.createElement("button");
@@ -15,6 +16,7 @@ let dice1;
 let dice2;
 const diceDiv1 = document.createElement("div");
 const diceDiv2 = document.createElement("div");
+const instList = document.getElementById("inst-list");
 
 
 //function to get random number to random pick of dice.
@@ -154,4 +156,43 @@ button.addEventListener("click", function() {
     
     playNum += dice1 + dice2;
     counter.innerHTML = playNum;
+})
+
+
+//function för att kunna starta om spelet via startsidan.
+function resetGame() {
+
+    //Resetta lite values
+    numInput.value = "";
+    playNum = 0;
+    diceContainer.innerHTML = "";
+    startDiv.innerHTML = "";
+    counterDiv.innerHTML = "";
+    gameOverDiv.innerHTML = "";
+
+    //skapa elementen som ska instruera.
+    const instHead = document.createElement("h2");
+    instHead.innerText = "HOW TO PLAY";
+    instDiv.appendChild(instHead);
+    instDiv.appendChild(instList);
+    instDiv.classList.add("instructions");
+
+    const startHead = document.createElement("h2");
+    startHead.innerText = "GIVE IT A TRY";
+    const pickaNum = document.createElement("h3");
+    pickaNum.innerText = "PICK A NUMBER BETWEEN 6 AND 9";
+
+    startDiv.classList.add("start");
+    startDiv.appendChild(startHead);
+    startDiv.appendChild(pickaNum);
+    startDiv.appendChild(bniDiv);
+
+    bniDiv.classList.add("start-game");
+    bniDiv.appendChild(numInput);
+    bniDiv.appendChild(startButton);
+    
+}
+
+tryAgainButton.addEventListener("click", function(){
+    resetGame();
 })
