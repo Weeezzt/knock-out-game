@@ -116,3 +116,7 @@ body {
     display: flex;
     width: 125px;
 }
+
+.fleximg {
+    display: flex;
+}

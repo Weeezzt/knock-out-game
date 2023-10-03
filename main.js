@@ -2,21 +2,28 @@
 //Get the elements from html to assigned variable.
 const startButton = document.getElementById("button");
 const numInput = document.getElementById("num-picked");
-const counterDiv = document.getElementById("counter")
-const diceContainer = document.getElementById("dice-container");
-const gameOverDiv  = document.getElementById("game-over");
+
+
 const instDiv = document.getElementById("instructions");
 const bniDiv = document.getElementById("start-game");
 const startDiv = document.getElementById("starter");
-const counter = document.createElement("span");
-const image = document.createElement("img");
+const counter = document.getElementById("counter");
+
+const image1 = document.getElementById("img-1");
+const image2 = document.getElementById("img-2");
+const instList = document.getElementById("inst-list");
+
 const button = document.createElement("button");
 const tryAgainButton = document.createElement("button");
+
 let dice1;
 let dice2;
-const diceDiv1 = document.createElement("div");
+const diceDiv = document.createElement("div");
 const diceDiv2 = document.createElement("div");
-const instList = document.getElementById("inst-list");
+
+let playNum = 0;
+
+
 
 
 //function to get random number to random pick of dice.
@@ -28,28 +35,51 @@ function getDice() {
 }
 
 //function for getting the correct image.
-function getImg(dice){
+function getImg1(dice){
 //Getting the right image.
+    
+
     if (dice == 1) {
-        image.src = "dices/dice1.png"
+        image1.src = "dices/dice1.png"
     } else if (dice == 2) {
-        image.src = "dices/dice2.png"
+        image1.src = "dices/dice2.png"
     }else if (dice == 3) {
-        image.src = "dices/dice3.png"
+        image1.src = "dices/dice3.png"
     }else if (dice == 4) {
-        image.src = "dices/dice4.png"
+        image1.src = "dices/dice4.png"
     }else if (dice == 5) {
-        image.src = "dices/dice5.png"
+        image1.src = "dices/dice5.png"
     }else if (dice == 6) {
-        image.src = "dices/dice6.png"
+        image1.src = "dices/dice6.png"
     }
 
-    return image;
+    return image1;
     
 }
 
+function getImg2(dice){
+    //Getting the right image.
+        
+    
+        if (dice == 1) {
+            image2.src = "dices/dice1.png"
+        } else if (dice == 2) {
+            image2.src = "dices/dice2.png"
+        }else if (dice == 3) {
+            image2.src = "dices/dice3.png"
+        }else if (dice == 4) {
+            image2.src = "dices/dice4.png"
+        }else if (dice == 5) {
+            image2.src = "dices/dice5.png"
+        }else if (dice == 6) {
+            image2.src = "dices/dice6.png"
+        }
+    
+        return image2;
+        
+    }
 //Number that´ll be the counter.
-let playNum = 0;
+
 
 //function to start the game.
 startButton.addEventListener("click", function() {
@@ -60,40 +90,40 @@ startButton.addEventListener("click", function() {
 
             startDiv.innerHTML = "";
             instDiv.innerHTML = "";
-            instDiv.classList.remove("instructions");
             //Get the correct dices on the screen.
 
             dice1 = getDice();
             dice2 = getDice();
 
-            let diceImg1 = getImg(dice1);
-            let diceImg2 = getImg(dice2);
+            let diceImage1 = getImg1(dice1);
+            let diceImage2 = getImg2(dice2);
 
-            diceImg1.classList.add("diceImg");
-            diceImg2.classList.add("diceImg");
+            diceImage1.classList.add("diceImg");
+            diceImage2.classList.add("diceImg");
 
-            diceDiv1.appendChild(diceImg1);
-            diceDiv2.appendChild(diceImg2);
+            diceDiv.classList.add("fleximg");
+            diceDiv.appendChild(diceImage1);
+            diceDiv.appendChild(diceImage2);
 
-            diceContainer.appendChild(diceDiv1);
-            diceContainer.appendChild(diceDiv2);
+            instDiv.appendChild(diceDiv);
+            
 
             //End the game if dice + dice = prepicked number.
             if(dice1 + dice2 == numInput.value) {
                 gameOver();
-            }
+            } else {
 
             // Get the number for the counter.
             playNum += dice1 + dice2;
             counter.innerHTML = playNum;
-            counterDiv.appendChild(counter);
+            startDiv.appendChild(counter);
             
             //Create button for reroll.
             button.innerText = "REROLL";
             button.classList.add("button");
-            counterDiv.classList.add("start");
-            counterDiv.appendChild(button);
-            
+            startDiv.classList.add("start");
+            startDiv.appendChild(button);
+            }
         }
 })
 
@@ -103,19 +133,20 @@ startButton.addEventListener("click", function() {
 function gameOver() {
 
     //Create the gameover text and append it to the div.
+    startDiv.innerHTML = "";
     const gameOverText = document.createElement("h2");
     gameOverText.innerText = "GAME OVER";
-    gameOverDiv.appendChild(gameOverText);
+    startDiv.appendChild(gameOverText);
 
     //Remove the diceimages.
-    diceContainer.innerHTML = "";
+    instDiv.innerHTML = "";
 
 
 
     //Create score value.
     let score = document.createElement("h3");
     score.innerText = "Total score: " + playNum;
-    gameOverDiv.appendChild(score);
+    startDiv.appendChild(score);
 
 
 
@@ -123,8 +154,8 @@ function gameOver() {
 
     tryAgainButton.innerHTML = "Try Again";
     tryAgainButton.classList.add("button");
-    counterDiv.innerHTML= "";
-    counterDiv.appendChild(tryAgainButton);
+    
+    startDiv.appendChild(tryAgainButton);
 
 
 }
@@ -138,16 +169,18 @@ button.addEventListener("click", function() {
     dice1 = getDice();
     dice2 = getDice();
 
-    let diceImg1 = getImg(dice1);
-    let diceImg2 = getImg(dice2);
+    let diceImage1 = getImg1(dice1);
+    let diceImage2 = getImg2(dice2);
 
-    diceImg1.classList.add("diceImg");
-    diceImg2.classList.add("diceImg");
-    diceDiv1.appendChild(diceImg1);
-    diceDiv2.appendChild(diceImg2);
+    diceImage1.classList.add("diceImg");
+    diceImage2.classList.add("diceImg");
+    diceDiv.appendChild(diceImage1);
+    diceDiv.appendChild(diceImage2);
+    diceDiv.classList.add("fleximg");
 
-    diceContainer.appendChild(diceDiv1);
-    diceContainer.appendChild(diceDiv2);
+    instDiv.classList.add("instructions");
+    instDiv.appendChild(diceDiv);
+    
 
     //End the game if dice + dice = prepicked number.
     if(dice1 + dice2 == numInput.value) {
@@ -165,10 +198,9 @@ function resetGame() {
     //Resetta lite values
     numInput.value = "";
     playNum = 0;
-    diceContainer.innerHTML = "";
+    
     startDiv.innerHTML = "";
-    counterDiv.innerHTML = "";
-    gameOverDiv.innerHTML = "";
+    
 
     //skapa elementen som ska instruera.
     const instHead = document.createElement("h2");
