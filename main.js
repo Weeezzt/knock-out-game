@@ -85,7 +85,7 @@ function getImg2(dice){
 startButton.addEventListener("click", function() {
     
         if (numInput.value < 6) {
-            alert("pick a number");
+            alert("pick a number between 6 and 9");
         } else { 
 
             startDiv.innerHTML = "";

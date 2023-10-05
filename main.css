@@ -81,12 +81,17 @@ body {
     grid-template-rows: auto;
     align-items: center;
     justify-items: center;
-    justify-content: space-between;
-    margin-bottom: 3vh;
+    justify-content: space-around;
+    margin-bottom: 1vh;
+}
+
+.start h2{
+    padding-bottom: 3vh;
 }
 
 .start-game {
     display: flex;
+    width: 40%;
 }
 
 .start-game, button{
@@ -101,7 +106,7 @@ body {
     align-items: center;
     justify-items: center;
     justify-content: center;
-    padding: 2px;
+    padding: 5px;
     margin: 6px;
 }
 
